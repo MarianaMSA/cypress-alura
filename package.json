@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "cy:open": "cypress open"
   },
   "author": "Mariana Salvador",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^10.2.0"
+    "cypress": "^10.3.0"
   }
 }
