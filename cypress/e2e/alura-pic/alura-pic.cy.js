@@ -17,4 +17,23 @@ describe("Login e registro de usuário alura pic", () => {
     cy.contains("button", "Register").click();
     cy.contains("ap-vmessage", "Invalid e-mail").should("be.visible");
   });
+  it("verificação mensagem de senha inválida", () => {
+    cy.contains("a", "Register now").click();
+    cy.get('input[formcontrolname="password"]').type("mariana");
+    cy.contains("button", "Register").click();
+    cy.contains("ap-vmessage", "Mininum length is 8").should("be.visible");
+  });
+  it("verificação mensagem de senha com menos de 8 caracteres", () => {
+    cy.contains("a", "Register now").click();
+    cy.get('input[formcontrolname="password"]').type("mariana");
+    cy.contains("button", "Register").click();
+    cy.contains("ap-vmessage", "Mininum length is 8").should("be.visible");
+  });
+
+  it("verificação mensagem de letra maiuscula no user name", () => {
+    cy.contains("a", "Register now").click();
+    cy.get('input[formcontrolname="userName"]').type("MARIANA");
+    cy.contains("button", "Register").click();
+    cy.contains("ap-vmessage", "Must be lower case").should("be.visible");
+  });
 });
