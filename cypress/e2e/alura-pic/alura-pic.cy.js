@@ -27,7 +27,7 @@ describe("Login e registro de usuário alura pic", () => {
     cy.contains("a", "Register now").click();
     cy.get('input[formcontrolname="password"]').type("mariana");
     cy.contains("button", "Register").click();
-    cy.contains("ap-vmessage", "Mininum length is ").should("be.visible");
+    cy.contains("ap-vmessage", "Mininum length is 8").should("be.visible");
   });
 
   it("verifica mensagem de letra maiuscula no user name", () => {
