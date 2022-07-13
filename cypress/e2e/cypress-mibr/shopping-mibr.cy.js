@@ -1,4 +1,4 @@
-describe("login and registro de usuário", () => {
+describe("login and user registration", () => {
   beforeEach(() => {
     cy.visit("https://shop.mibr.gg/");
   });
@@ -37,7 +37,43 @@ describe("login and registro de usuário", () => {
       "Campo obrigatório"
     ).should("be.visible");
     cy.contains(
-      '[data-testid="error-input-password""]',
+      '[data-testid="error-input-password"]',
+      "Campo obrigatório"
+    ).should("be.visible");
+  });
+  it("login, email field blank and correct password", () => {
+    cy.get(".flex > .h-6").click();
+    cy.get("#password").type("a1234567");
+    cy.contains("button", "Acessar minha conta").click();
+    cy.contains(
+      '[data-testid="error-input-username"]',
+      "Campo obrigatório"
+    ).should("be.visible");
+  });
+  it("login, email field blank and incorrect password", () => {
+    cy.get(".flex > .h-6").click();
+    cy.get("#password").type("b1234567");
+    cy.contains("button", "Acessar minha conta").click();
+    cy.contains(
+      '[data-testid="error-input-username"]',
+      "Campo obrigatório"
+    ).should("be.visible");
+  });
+  it("login, password field blank and correct e-mail", () => {
+    cy.get(".flex > .h-6").click();
+    cy.get("#username").type("mariana.assis@mkplace.com.br");
+    cy.contains("button", "Acessar minha conta").click();
+    cy.contains(
+      '[data-testid="error-input-password"]',
+      "Campo obrigatório"
+    ).should("be.visible");
+  });
+  it("login, password field blank and incorrect e-mail", () => {
+    cy.get(".flex > .h-6").click();
+    cy.get("#username").type("marianaassis@mkplace.com.br");
+    cy.contains("button", "Acessar minha conta").click();
+    cy.contains(
+      '[data-testid="error-input-password"]',
       "Campo obrigatório"
     ).should("be.visible");
   });
